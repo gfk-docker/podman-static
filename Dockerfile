@@ -1,6 +1,6 @@
 # runc
 FROM docker.io/library/golang:alpine3.10 AS runc
-ARG RUNC_VERSION=v1.0.0-rc8
+ARG RUNC_VERSION=v1.0.0-rc9
 RUN set -eux; \
 	apk add --no-cache --virtual .build-deps gcc musl-dev libseccomp-dev make git bash; \
 	git clone --branch ${RUNC_VERSION} https://github.com/opencontainers/runc src/github.com/opencontainers/runc; \
