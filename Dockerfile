@@ -40,7 +40,7 @@ RUN set -eux; \
 # conmon
 # TODO: add systemd support
 FROM podmanbuildbase AS conmon
-ARG CONMON_VERSION=v2.0.0
+ARG CONMON_VERSION=v2.0.1
 RUN git clone --branch ${CONMON_VERSION} https://github.com/containers/conmon.git /conmon
 WORKDIR /conmon
 RUN set -eux; \
@@ -81,7 +81,7 @@ RUN set -eux; \
 # fuse-overlay (derived from https://github.com/containers/fuse-overlayfs/blob/master/Dockerfile.static)
 FROM podmanbuildbase AS fuse-overlayfs
 RUN apk add --update --no-cache automake autoconf meson ninja clang g++ eudev-dev
-ARG LIBFUSE_VERSION=fuse-3.6.2
+ARG LIBFUSE_VERSION=fuse-3.7.0
 RUN git clone --branch=${LIBFUSE_VERSION} https://github.com/libfuse/libfuse /libfuse
 WORKDIR /libfuse
 RUN set -eux; \
@@ -92,7 +92,7 @@ RUN set -eux; \
 	ninja; \
 	ninja install; \
 	fusermount3 -V
-ARG FUSEOVERLAYFS_VERSION=v0.4.1
+ARG FUSEOVERLAYFS_VERSION=v0.6.5
 RUN set -eux; \
 	git clone https://github.com/containers/fuse-overlayfs /fuse-overlayfs; \
 	cd /fuse-overlayfs; \
